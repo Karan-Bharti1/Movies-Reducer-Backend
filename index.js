@@ -80,11 +80,11 @@ async function updateMovie(movieId,dataToBeUpdated){
        throw error 
     }
 }
-app.post("/movies/:movieId",async(req,res)=>{
+app.put("/movies/:movieId",async(req,res)=>{
     try {
        const updatedMovie=await updateMovie(req.params.movieId,req.body) 
        if(updatedMovie){
-        res.status(200).json({message:"Movie Updated Successfuly",updateMovie})
+        res.status(200).json(updateMovie)
        }else{
         res.status(404).json({error:"Movie Not Found"})
        }
