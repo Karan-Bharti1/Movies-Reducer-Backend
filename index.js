@@ -74,7 +74,7 @@ app.delete("/movies/:movieId",async(req,res)=>{
 })
 async function updateMovie(movieId,dataToBeUpdated){
     try {
-       const updatedMovie=await MovieReducer.findByIdAndUpdate(movieId,dataToBeUpdated,{new:true,}) 
+       const updatedMovie=await MovieReducer.findByIdAndUpdate(movieId,dataToBeUpdated,{new:true}) 
      return updatedMovie  
     } catch (error) {
        throw error 
@@ -84,7 +84,7 @@ app.put("/movies/:movieId",async(req,res)=>{
     try {
        const updatedMovie=await updateMovie(req.params.movieId,req.body) 
        if(updatedMovie){
-        res.status(200).json(updateMovie)
+        res.status(200).json(updatedMovie)
        }else{
         res.status(404).json({error:"Movie Not Found"})
        }
